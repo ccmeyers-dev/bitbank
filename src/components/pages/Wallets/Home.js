@@ -9,7 +9,6 @@ import {
 import Container from "../../atoms/Container";
 import Text from "../../atoms/Text";
 import SubText from "../../atoms/SubText";
-import Button from "../../atoms/Button";
 
 import InvestmentCard from "../../molecules/InvestmentCard";
 import { WalletItemFullCard } from "../../molecules/WalletItem";
