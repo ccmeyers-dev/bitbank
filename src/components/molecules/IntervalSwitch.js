@@ -15,8 +15,7 @@ const IntervalButton = styled.p`
   font-weight: 600;
   border-radius: ${({ radius }) => radius || "16px"};
 
-  color: ${({ theme, active }) =>
-    active ? theme.colors.invertText : theme.colors.text};
+  color: ${({ theme, active }) => (active ? "white" : theme.colors.text)};
 
   background: transparent;
   transition: none;

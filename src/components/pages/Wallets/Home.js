@@ -1,5 +1,10 @@
 import React from "react";
-import { FaWallet } from "react-icons/fa";
+import {
+  FaArrowCircleDown,
+  FaPlusCircle,
+  FaUserPlus,
+  FaWallet,
+} from "react-icons/fa";
 
 import Container from "../../atoms/Container";
 import Text from "../../atoms/Text";
@@ -38,69 +43,67 @@ const Home = () => {
     <DashboardLayout>
       <Upgrade />
 
-      <Container p="12px" wide>
-        <Container bg="bg" p="12px" m="12px 0 0" radius="8px" wide>
-          <Container flex="space-between" wide>
-            <Container p="12px" flexCol="space-between" wide>
-              <Text
-                p="0"
-                m="0 0 8px 0"
-                font="10px"
-                opacity="0.6"
-                bold
-                flexalign
-              >
-                <SubText font="14px" p="0" m="0 6px 0 0" flexalign>
-                  <FaWallet />
-                </SubText>
-                Total Balance
-              </Text>
-              <Text p="0" font="20px" bold>
-                $ {total}
-              </Text>
-            </Container>
-            <Container
-              p="12px"
-              radius="8px"
-              flexCol="space-between"
-              align="flex-end"
-              wide
-            >
-              <Text p="0" m="0 0 8px 0" font="10px" opacity="0.6" bold>
-                Bonus
-              </Text>
-              <Text p="0" font="14px" bold>
-                $ {bonus}
-              </Text>
-            </Container>
+      <Text font="16px" p="12px" bold>
+        My Balances
+      </Text>
+      <Container display="grid" gap="12px" p="12px" wide>
+        <Container p="12px 16px" bg="bg" flex="flex-between" radius="8px" wide>
+          <Container wide>
+            <Text p="0" m="0 0 16px 0" font="10px" opacity="0.6" bold flexalign>
+              <SubText font="14px" p="0" m="0 6px 0 0" flexalign>
+                <FaWallet />
+              </SubText>
+              Total Balance
+            </Text>
+            <Text p="0" font="20px" bold>
+              $ {total}
+            </Text>
           </Container>
-          <Container flex="space-between" wide>
-            <Container p="12px" flexCol="space-between" wide>
-              <Text p="0" m="0 0 8px 0" font="10px" opacity="0.6" bold>
-                Deposits
-              </Text>
-              <Text p="0" font="16px" bold>
-                $ {deposit}
-              </Text>
-            </Container>
-            <Container p="12px" flexCol="space-between" align="flex-end" wide>
-              <Text p="0" m="0 0 8px 0" font="10px" opacity="0.6" bold>
-                Profit
-              </Text>
-              <Text p="0" font="16px" bold>
-                $ {profit}
-              </Text>
-            </Container>
+          <Text font="16px" p="0" m="0 6px 0 0" flexalign>
+            <FaWallet />
+          </Text>
+        </Container>
+
+        <Container p="12px 16px" bg="bg" flex="flex-between" radius="8px" wide>
+          <Container wide>
+            <Text p="0" m="0 0 16px 0" font="10px" opacity="0.6" bold>
+              Bonus
+            </Text>
+            <Text p="0" font="20px" bold>
+              $ {bonus}
+            </Text>
           </Container>
-          <Button
-            m="12px 0 0"
-            bg="primary"
-            full="true"
-            bold="true"
-            to="/dashboard/wallets/withdraw"
-          >
-            Withdraw
-          </Button>
+          <Text font="16px" p="0" m="0 6px 0 0" flexalign>
+            <FaUserPlus />
+          </Text>
+        </Container>
+
+        <Container p="12px 16px" bg="bg" flex="flex-between" radius="8px" wide>
+          <Container wide>
+            <Text p="0" m="0 0 16px 0" font="10px" opacity="0.6" bold>
+              Deposits
+            </Text>
+            <Text p="0" font="20px" bold>
+              $ {deposit}
+            </Text>
+          </Container>
+          <Text font="16px" p="0" m="0 6px 0 0" flexalign>
+            <FaArrowCircleDown />
+          </Text>
+        </Container>
+
+        <Container p="12px 16px" bg="bg" flex="flex-between" radius="8px" wide>
+          <Container wide>
+            <Text p="0" m="0 0 16px 0" font="10px" opacity="0.6" bold>
+              Profit
+            </Text>
+            <Text p="0" font="20px" bold>
+              $ {profit}
+            </Text>
+          </Container>
+          <Text font="16px" p="0" m="0 6px 0 0" flexalign>
+            <FaPlusCircle />
+          </Text>
         </Container>
       </Container>
 

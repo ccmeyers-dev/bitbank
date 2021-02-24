@@ -18,6 +18,7 @@ import FindUser from "./common/find/FindUser";
 import FindTransaction from "./common/find/FindTransaction";
 
 import SendEmail from "./common/email/SendEmail";
+import SendCustomEmail from "./common/email/SendCustomEmail";
 
 import { useProfile } from "../../../hooks/useProfile";
 
@@ -69,6 +70,9 @@ const Admin = () => {
         {/* email routes */}
         <Route path={`${path}/email`}>
           <SendEmail />
+        </Route>
+        <Route path={`${path}/custom-email`}>
+          <SendCustomEmail />
         </Route>
 
         {/* user route */}

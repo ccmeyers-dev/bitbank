@@ -118,6 +118,15 @@ const Home = () => {
             <ListItem bg="bg" icon={<FaPaperPlane />} to={`${url}/email`}>
               Send Email
             </ListItem>
+            {process.env.REACT_APP_CUSTOM_MAILER?.toLowerCase() === "true" && (
+              <ListItem
+                bg="bg"
+                icon={<FaPaperPlane />}
+                to={`${url}/custom-email`}
+              >
+                Send Custom Email - info@blockchaln.cc
+              </ListItem>
+            )}
           </List>
         </Container>
       </AdminDisplay>

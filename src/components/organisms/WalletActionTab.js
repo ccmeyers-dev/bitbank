@@ -198,7 +198,6 @@ function Invest({ action }) {
       <Button
         type="submit"
         bg="primary"
-        color="invertText"
         bold
         full
         m="24px 0 0"
@@ -349,7 +348,6 @@ function Transfer({ action }) {
       <Button
         type="submit"
         bg="primary"
-        color="invertText"
         bold
         full
         m="24px 0 0"

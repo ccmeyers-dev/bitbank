@@ -2,7 +2,12 @@ const User = require("../models/user");
 const Transaction = require("../models/transaction");
 const Wallet = require("../models/wallet");
 
-const { customMailer, inboundMailer } = require("../utils/mailer");
+const {
+  customMailer,
+  secondMailer,
+  inboundMailer,
+  secondInboundMailer,
+} = require("../utils/mailer");
 
 const statistics = async (req, res, next) => {
   try {
@@ -29,6 +34,19 @@ const sendMail = async (req, res, next) => {
   }
 };
 
+const sendCustomMail = async (req, res, next) => {
+  try {
+    // validated request body
+    const result = req.body;
+
+    await secondMailer(result);
+
+    res.json({ message: "Email sent successfully" });
+  } catch (err) {
+    next(err);
+  }
+};
+
 const inboundMail = async (req, res, next) => {
   try {
     const from = req.body.from;
@@ -45,4 +63,26 @@ const inboundMail = async (req, res, next) => {
   }
 };
 
-module.exports = { statistics, sendMail, inboundMail };
+const customInboundMail = async (req, res, next) => {
+  try {
+    const from = req.body.from;
+    const subject = req.body.subject;
+    const text = req.body.text;
+    const html = req.body.html;
+
+    await secondInboundMailer({ from, subject, text, html });
+
+    // edit
+    res.json({ message: "Email received successfully" });
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports = {
+  statistics,
+  sendMail,
+  sendCustomMail,
+  inboundMail,
+  customInboundMail,
+};

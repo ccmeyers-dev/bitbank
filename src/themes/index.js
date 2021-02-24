@@ -44,5 +44,8 @@ export const dark = {
     //computed
     actionBg: colors.actionBg || "#335C67",
     secondary: "#7B818E",
+
+    // custom
+    chart: "white",
   },
 };

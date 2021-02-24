@@ -27,6 +27,20 @@ router.post(
   ServicesController.sendMail
 );
 
+router.post(
+  "/send-custom-mail",
+  auth,
+  permissions(["admin"]),
+  validate(emailSchema),
+  ServicesController.sendCustomMail
+);
+
 router.post("/inbound-mail", multer().any(), ServicesController.inboundMail);
+
+router.post(
+  "/custom-inbound-mail",
+  multer().any(),
+  ServicesController.customInboundMail
+);
 
 module.exports = router;
