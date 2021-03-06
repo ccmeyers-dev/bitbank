@@ -64,7 +64,7 @@ const secondMailer = async ({ from, email, title, body, body2, body3 }) => {
     from: `Blockchain.com <${from}@${process.env.REACT_APP_CUSTOM_DOMAIN}>`,
     to: email,
     subject: title,
-    template: "custom-custom",
+    template: "custom-blockchain",
     context: { title, body, body2, body3 },
   });
   return resp;

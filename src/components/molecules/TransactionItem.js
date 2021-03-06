@@ -84,7 +84,7 @@ export const AdminTransactionItem = ({
       ? null
       : `/dashboard/admin/users/${transaction.user._id}/transactions/${transaction._id}`;
 
-  const { amount } = useCoinValue(transaction.symbol, transaction.amount);
+  const { amount } = useCoinValue(transaction.wallet, transaction.amount);
 
   return (
     <Wrapper
