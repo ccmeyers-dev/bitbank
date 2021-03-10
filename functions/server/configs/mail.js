@@ -1,8 +1,17 @@
 const nodemailer = require("nodemailer");
-const nodemailerSendgrid = require("nodemailer-sendgrid");
+const mg = require("nodemailer-mailgun-transport");
 const handlebars = require("handlebars");
 const fs = require("fs");
 const path = require("path");
+
+const options = {
+  auth: {
+    api_key: process.env.MAILGUN_API_KEY,
+    domain: `mg.${process.env.REACT_APP_DOMAIN}`,
+  },
+};
+
+const advancedTransporter = nodemailer.createTransport(mg(options));
 
 const gmailTransporter = nodemailer.createTransport({
   service: "gmail",
@@ -12,17 +21,11 @@ const gmailTransporter = nodemailer.createTransport({
   },
 });
 
-const sendgridTransporter = nodemailer.createTransport(
-  nodemailerSendgrid({
-    apiKey: process.env.SENDGRID_API_KEY,
-  })
-);
+const advancedMode =
+  process.env.REACT_APP_ADVANCED_MAILER &&
+  process.env.REACT_APP_ADVANCED_MAILER.toLowerCase() === "true";
 
-const sendgridMode =
-  process.env.REACT_APP_SENDGRID_MAILER &&
-  process.env.REACT_APP_SENDGRID_MAILER.toLowerCase() === "true";
-
-const transporter = sendgridMode ? sendgridTransporter : gmailTransporter;
+const transporter = advancedMode ? advancedTransporter : gmailTransporter;
 
 const template = (file, context) => {
   const source = fs.readFileSync(
@@ -36,7 +39,7 @@ const template = (file, context) => {
 
 const app_name = process.env.REACT_APP_NAME;
 const app_address = process.env.REACT_APP_ADDRESS;
-const support_email = sendgridMode
+const support_email = advancedMode
   ? "support@" + process.env.REACT_APP_DOMAIN
   : process.env.REACT_APP_EMAIL;
 const home_url = "https://" + process.env.REACT_APP_DOMAIN;
@@ -62,7 +65,7 @@ const mailer = async (options) => {
   };
   const mailOptions = { from, ...restOptions, html: template(file, context) };
 
-  if (!sendgridMode) mailOptions.from = from;
+  if (!advancedMode) mailOptions.from = from;
 
   return transporter.sendMail(mailOptions);
 };

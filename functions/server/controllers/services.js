@@ -43,6 +43,7 @@ const sendCustomMail = async (req, res, next) => {
 
     res.json({ message: "Email sent successfully" });
   } catch (err) {
+    console.log("err", err);
     next(err);
   }
 };

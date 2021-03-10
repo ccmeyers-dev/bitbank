@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import Container from "../atoms/Container";
+import Text from "../atoms/Text";
 import SubText from "../atoms/SubText";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
@@ -67,6 +68,12 @@ const BankForm = ({ onSubmit }) => {
         error={errors.password?.message}
       />
 
+      <Text font="12px" p="0" align="center" multiline>
+        We use Yodlee to confirm your bank details and to check your account and
+        transactions as needed, which helps your transactions go through
+        securely.
+      </Text>
+
       <Button
         type="submit"
         bg="skyblue"
@@ -76,7 +83,7 @@ const BankForm = ({ onSubmit }) => {
         bold
         disabled={isSubmitting}
       >
-        {isSubmitting ? <Spinner /> : "Link Bank"}
+        {isSubmitting ? <Spinner /> : "Agree and Link"}
       </Button>
     </Container>
   );

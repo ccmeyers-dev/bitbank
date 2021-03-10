@@ -20,7 +20,7 @@ const Icon = styled(ReactSVG)`
   }
 `;
 
-const BankBrand = ({ logo, ...props }) => {
+const BankBrand = ({ logo, transparent, ...props }) => {
   const bank = supportedBanks.find((b) => b.name === logo);
   if (!bank) return null;
   return (
@@ -28,7 +28,7 @@ const BankBrand = ({ logo, ...props }) => {
       fallback={() => ""}
       loading={() => <Loader w="40px" h={props.size || "40px"} radius="4px" />}
       src={`/assets/icons/bank/${bank.code}.svg`}
-      bg={bank.color}
+      bg={transparent ? undefined : bank.color}
       {...props}
     />
   );

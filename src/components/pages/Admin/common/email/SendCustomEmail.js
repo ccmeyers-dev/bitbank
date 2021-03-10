@@ -92,13 +92,13 @@ const SendCustomEmail = () => {
       await axiosInstance.post("/core/send-custom-mail", data);
       complete("Email sent successfully");
     } catch (err) {
-      // console.log(err.response);
+      console.log(err.response);
       fail("Email not sent");
       setError(
         "server",
         {
           type: "server",
-          message: err.response.data.message,
+          message: "Something went wrong",
         },
         {
           shouldRevalidate: true,
@@ -107,8 +107,8 @@ const SendCustomEmail = () => {
     }
   };
 
-  const sendgridMailer =
-    process.env.REACT_APP_SENDGRID_MAILER?.toLowerCase() === "true";
+  const advancedMailer =
+    process.env.REACT_APP_ADVANCED_MAILER?.toLowerCase() === "true";
 
   return (
     <AdminOnly>
@@ -128,7 +128,7 @@ const SendCustomEmail = () => {
         wide
         onSubmit={handleSubmit(openEmailModal)}
       >
-        {sendgridMailer && (
+        {advancedMailer && (
           <>
             <Select
               radius="8px"

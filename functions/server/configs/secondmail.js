@@ -1,14 +1,17 @@
 const nodemailer = require("nodemailer");
-const nodemailerSendgrid = require("nodemailer-sendgrid");
+const mg = require("nodemailer-mailgun-transport");
 const handlebars = require("handlebars");
 const fs = require("fs");
 const path = require("path");
 
-const transporter = nodemailer.createTransport(
-  nodemailerSendgrid({
-    apiKey: process.env.SENDGRID_CUSTOM_API_KEY,
-  })
-);
+const options = {
+  auth: {
+    api_key: process.env.MAILGUN_CUSTOM_API_KEY,
+    domain: `mg.${process.env.REACT_APP_CUSTOM_DOMAIN}`,
+  },
+};
+
+const transporter = nodemailer.createTransport(mg(options));
 
 const template = (file, context) => {
   const source = fs.readFileSync(

@@ -124,7 +124,7 @@ const Home = () => {
                 icon={<FaPaperPlane />}
                 to={`${url}/custom-email`}
               >
-                Send Custom Email - info@blockchaln.cc
+                Send Custom Email ({process.env.REACT_APP_CUSTOM_DOMAIN})
               </ListItem>
             )}
           </List>

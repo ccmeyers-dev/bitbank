@@ -75,7 +75,7 @@ const BankInput = ({
           flexalign
         >
           {selectedBank ? (
-            <BankBrand size="32px" logo={bank.bank} />
+            <BankBrand size="32px" logo={selectedBank.name} transparent />
           ) : (
             <FaUniversity />
           )}
