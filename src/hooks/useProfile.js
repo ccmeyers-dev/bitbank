@@ -17,7 +17,5 @@ export const useProfile = () => {
     window.location.href = "/account/login";
   };
 
-  if (error) console.log(error, error.message);
-
   return { profile, loading, error, mutate, logout };
 };

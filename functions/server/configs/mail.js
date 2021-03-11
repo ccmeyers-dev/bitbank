@@ -6,7 +6,7 @@ const path = require("path");
 
 const options = {
   auth: {
-    api_key: process.env.MAILGUN_API_KEY,
+    api_key: process.env.MAILGUN_API_KEY || "api_key",
     domain: `mg.${process.env.REACT_APP_DOMAIN}`,
   },
 };
