@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 // error handler
 app.use((err, req, res, next) => {
   const status = err.status || 500;
-  console.log("mssg", err.message);
+  // console.log(err.message);
   res.status(status).send({
     status,
     message: err.message,

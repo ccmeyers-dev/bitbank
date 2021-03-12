@@ -30,7 +30,7 @@ const ForgotPassword = () => {
       await axios.post("/api/auth/reset-password", { email });
       setDone(true);
     } catch (err) {
-      console.log(err.response);
+      // console.log(err.response);
       setError("email", {
         type: "server",
         message: "Unable to find account",
