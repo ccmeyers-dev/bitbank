@@ -4,7 +4,7 @@ const app_name = process.env.REACT_APP_NAME;
 const appUrl = "https://app." + process.env.REACT_APP_DOMAIN;
 
 const welcomeMail = async (user, emailToken) => {
-  const verificationLink = appUrl + "/account/verify-email/" + emailToken;
+  const verificationLink = appUrl + "/confirmation/verify-email/" + emailToken;
 
   const resp = await mailer({
     to: user.email,
