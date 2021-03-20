@@ -108,7 +108,7 @@ function Invest({ action }) {
     amount: yup
       .number()
       .required("Amount is required")
-      .min(100, "Minimum amount is 100 USD")
+      .min(50, "Minimum amount is 50 USD")
       .max(balance, "You do not have sufficient balance"),
     duration: yup.number().required(),
   });
@@ -236,7 +236,7 @@ function Transfer({ action }) {
     amount: yup
       .number()
       .required("Amount is required")
-      .min(100, "Minimum amount is 100 USD")
+      .min(50, "Minimum amount is 50 USD")
       .max(balance, "You do not have sufficient balance"),
     email: yup.string().email("Invalid Email").required("Email is required"),
   });
